@@ -17,8 +17,8 @@ The code was extracted from [https://github.com/longxinH/xhprof](https://github.
 ```
 git clone https://github.com/marcelovani/xhprof_extension.git ./xhprof
 cd xhprof/extension/
-/path/to/php7/bin/phpize
-./configure --with-php-config=/path/to/php7/bin/php-config
+phpize
+./configure --with-php-config=/usr/local/bin/php-config
 make && sudo make install
 ```
 
