@@ -37,8 +37,25 @@ xhprof.output_dir = /tmp/xhprof
 |xhprof.sampling_depth  | INT_MAX | >= v2.* | Depth to trace call-chain by the sampling profiler|
 |xhprof.collect_additional_info  | 0 | >= v2.1 | Collect mysql_query, curl_exec internal info. The default is 0. Open value is 1|
 
-## Docker
-You can use the Dockerfile in the docker folder as a starting point to build the extension using Docker.
+## Composer
+You can use Composer to include this repo into your project, by adding the following lines on composer.json and then
+running `composer require marcelovani/xhprof_extension`
 
-## See further documentation
+```
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/marcelovani/xhprof_extension.git"
+        }
+    ]
+```
+
+## Docker
+This image can be built with Docker and pushed to Docker hub.
+
+Commands:
+- `make build`: Will pull latest changes from origin repo, build and test the extension
+- `make deploy-image`: Will deploy to Docker hub. Remember to update the namespace in .env file.
+
+## See further documentation on origin repo
 [https://github.com/longxinH/xhprof/README.md](https://github.com/longxinH/xhprof/blob/master/README.md)

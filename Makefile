@@ -14,6 +14,3 @@ deploy-image:
 build-deploy-image:
 	make build-image
 	make deploy-image
-
-test:
-	docker-compose exec php sh -c "php -i | grep xhprof"

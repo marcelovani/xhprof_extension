@@ -1,0 +1,9 @@
+{
+  "name": "marcelovani/xhprof_extension",
+  "description": "Xhprof extension for PHP 7 and 8",
+  "keywords": ["PHP", "extension", "xhprof", "profiling"],
+  "license": "MIT",
+  "require": {
+    "php": "^7.2 || ^8.0"
+  }
+}
