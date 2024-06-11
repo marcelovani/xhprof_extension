@@ -1,4 +1,6 @@
-FROM php:8.2.20-fpm-alpine3.20
+ARG PHP_VERSION
+
+FROM php:${PHP_VERSION}-alpine
 
 # Download script to install PHP extensions and dependencies
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/

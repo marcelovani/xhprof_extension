@@ -15,11 +15,11 @@ git clone https://github.com/longxinH/xhprof.git /tmp/xhprof
 cp -a /tmp/xhprof/extension extension
 
 echo "\033[1;104m"
-echo "\033[1;33m[INFO] Build ${NAMESPACE}/${COMPOSE_PROJECT_NAME}" \
-  && docker build --force-rm -t ${NAMESPACE}/${COMPOSE_PROJECT_NAME} .
-
+echo "\033[1;33m[INFO] Build ${NAMESPACE}/${COMPOSE_PROJECT_NAME}:php${PHP_VERSION}" \
+  && docker build --force-rm -t ${NAMESPACE}/${COMPOSE_PROJECT_NAME}:php${PHP_VERSION} . \
+                  --build-arg PHP_VERSION=${PHP_VERSION}
 echo Please remember to commit any changes in the extension folder
-git diff
+git --no-pager diff
 
-echo "To use the image, run: docker run -d -it --rm --name ${COMPOSE_PROJECT_NAME} ${NAMESPACE}/${COMPOSE_PROJECT_NAME}"
+echo "To use the image, run: docker run -d -it --rm --name ${COMPOSE_PROJECT_NAME}_php${PHP_VERSION} ${NAMESPACE}/${COMPOSE_PROJECT_NAME}:php${PHP_VERSION}"
 echo "\033[0m"
