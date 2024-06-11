@@ -3,7 +3,7 @@ Contains the code to build and generate Xhprof extension for PHP.
 
 XHProf is a function-level hierarchical profiler for PHP and has a simple HTML based navigational interface. The raw data collection component is implemented in C (as a PHP extension). The reporting/UI layer is all in PHP. It is capable of reporting function-level inclusive and exclusive wall times, memory usage, CPU times and number of calls for each function. Additionally, it supports ability to compare two runs (hierarchical DIFF reports), or aggregate results from multiple runs.
 
-The code was extracted from https://github.com/longxinH/xhprof, to keep only the extension in this repository. The Hxprof UI can be found in another repo.
+The code was extracted from [https://github.com/longxinH/xhprof](https://github.com/longxinH/xhprof), to keep only the extension in this repository. The Hxprof UI can be found in another repo.
 
 # PHP Versions
 - 7.2
@@ -41,4 +41,4 @@ xhprof.output_dir = /tmp/xhprof
 You can use the Dockerfile in the docker folder as a starting point to build the extension using Docker.
 
 ## See further documentation
-https://github.com/longxinH/xhprof/README.md
+[https://github.com/longxinH/xhprof/README.md](https://github.com/longxinH/xhprof/blob/master/README.md)
