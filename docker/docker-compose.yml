@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  php:
+    build:
+      context: ./
+      dockerfile: php/Dockerfile${PHP_VERSION}
+    container_name: "${COMPOSE_PROJECT_NAME}_php"
+    volumes:
+      - ./test:/app/test
