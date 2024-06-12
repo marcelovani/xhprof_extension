@@ -57,5 +57,33 @@ Commands:
 - `make build`: Will pull latest changes from origin repo, build and test the extension
 - `make deploy-image`: Will deploy to Docker hub. Remember to update the namespace in .env file.
 
+## Dockerfile / Docker Compose
+You can use this Dockerfile as a starting point to integrate the extension with your project.
+
+```Dockerfile
+FROM php:8-fpm-alpine
+
+# Download script to install PHP extensions and dependencies
+ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
+
+RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
+
+# Install necessary packages for building the extension
+RUN apk --no-cache add git autoconf g++ make
+
+# Clone the xhprof repository and build the xhprof extension.
+RUN git clone https://github.com/marcelovani/xhprof_extension.git /tmp/xhprof
+RUN cd /tmp/xhprof/extension/ \
+    && phpize \
+    && ./configure --with-php-config=/usr/local/bin/php-config \
+    && make \
+    && make install
+
+# Enable the xhprof extension in php.ini
+RUN echo "[xhprof]" > /usr/local/etc/php/conf.d/xhprof.ini \
+    && echo "extension = xhprof.so" >> /usr/local/etc/php/conf.d/xhprof.ini \
+    && echo "xhprof.output_dir = /tmp/xhprof" >> /usr/local/etc/php/conf.d/xhprof.ini
+```
+
 ## See further documentation on origin repo
 [https://github.com/longxinH/xhprof/README.md](https://github.com/longxinH/xhprof/blob/master/README.md)
